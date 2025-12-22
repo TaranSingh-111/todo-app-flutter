@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../util/todo_tile.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -15,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.yellow[200],
       appBar: AppBar(
         backgroundColor: Colors.yellow,
+        elevation: 0,
         title: Text(
           'T O  D O',
           style: GoogleFonts.montserrat(
@@ -22,6 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         centerTitle: true,
+      ),
+      body:ListView(
+        children: [
+          ToDoTile(),
+          ToDoTile(),
+          ToDoTile(),
+          ToDoTile(),
+          ToDoTile(),
+        ],
       ),
     );
   }
