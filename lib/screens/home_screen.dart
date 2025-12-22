@@ -11,6 +11,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  List toDoList = [
+    ["Do Homework", true],
+    ["Go Gym", true],
+    ["Do Gardening", false],
+    ["Go Play", false],
+    ["Do Nothing", true],
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,34 +35,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
-      body:ListView(
-        children: [
-          ToDoTile(
-            taskName: "Do Homework",
-            taskCompleted: true,
-            onChanged: (p){},
-          ),
-          ToDoTile(
-            taskName: "Go Gym",
-            taskCompleted: true,
-            onChanged: (p){},
-          ),
-          ToDoTile(
-            taskName: "Do Gardening",
-            taskCompleted: false,
-            onChanged: (p){},
-          ),
-          ToDoTile(
-            taskName: "Go Play",
-            taskCompleted: false,
-            onChanged: (p){},
-          ),
-          ToDoTile(
-            taskName: "Do Nothing",
-            taskCompleted: true,
-            onChanged: (p){},
-          ),
-        ],
+      body:ListView.builder(
+        itemCount: toDoList.length,
+        itemBuilder: (context, index) {
+          return ToDoTile(
+            taskName: toDoList[index][0],
+            taskCompleted: toDoList[index][1],
+            onChanged: (p0) {}
+          );
+        }
       ),
     );
   }
