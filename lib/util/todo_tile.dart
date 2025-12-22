@@ -40,21 +40,16 @@ class ToDoTile extends StatelessWidget {
               value: taskCompleted,
               onChanged: onChanged,
               checkColor: Colors.white,
-              fillColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states){
-                    if(states.contains(MaterialState.selected)){
-                      return Colors.black;
-                    }
-                    else{
-                      return Colors.yellow[600];
-                    }
-                  }
-              )
+              activeColor: Colors.black,
             ),
 
             //task
-            Text(taskName),
-
+            Text(
+              taskName,
+              style: TextStyle(
+                decoration: taskCompleted ? TextDecoration.lineThrough : TextDecoration.none
+              ),
+            ),
           ],
         ),
       ),
