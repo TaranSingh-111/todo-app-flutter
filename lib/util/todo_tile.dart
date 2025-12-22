@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ToDoTile extends StatelessWidget {
-  const ToDoTile({super.key});
+
+  final String taskName;
+  final bool taskCompleted;
+  Function(bool?)? onChanged;
+
+  ToDoTile({
+    super.key,
+    required this.taskName,
+    required this.taskCompleted,
+    required this.onChanged
+  });
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +21,6 @@ class ToDoTile extends StatelessWidget {
       padding: const EdgeInsets.only(top: 35, left: 35, right: 35),
       child: Container(
         padding: EdgeInsets.all(25),
-        child: Text("Do HomeWork"),
         decoration: BoxDecoration(
           color: Colors.yellow[600],
           borderRadius: BorderRadius.circular(12),
@@ -19,6 +30,18 @@ class ToDoTile extends StatelessWidget {
             spreadRadius: 2,
             offset: const Offset(0, 4)
           )]
+        ),
+
+
+        child: Row(
+          children: [
+            //checkbox
+            Checkbox(value: taskCompleted, onChanged: onChanged),
+
+            //task
+            Text(taskName),
+
+          ],
         ),
       ),
     );

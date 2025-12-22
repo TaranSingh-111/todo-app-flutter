@@ -28,11 +28,31 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body:ListView(
         children: [
-          ToDoTile(),
-          ToDoTile(),
-          ToDoTile(),
-          ToDoTile(),
-          ToDoTile(),
+          ToDoTile(
+            taskName: "Do Homework",
+            taskCompleted: true,
+            onChanged: (p){},
+          ),
+          ToDoTile(
+            taskName: "Go Gym",
+            taskCompleted: true,
+            onChanged: (p){},
+          ),
+          ToDoTile(
+            taskName: "Do Gardening",
+            taskCompleted: false,
+            onChanged: (p){},
+          ),
+          ToDoTile(
+            taskName: "Go Play",
+            taskCompleted: false,
+            onChanged: (p){},
+          ),
+          ToDoTile(
+            taskName: "Do Nothing",
+            taskCompleted: true,
+            onChanged: (p){},
+          ),
         ],
       ),
     );
