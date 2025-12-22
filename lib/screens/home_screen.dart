@@ -20,6 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
     ["Do Nothing", true],
   ];
 
+  void checkBoxChanged(bool? value, int index){
+    setState(() {
+      toDoList[index][1] = !toDoList[index][1];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return ToDoTile(
             taskName: toDoList[index][0],
             taskCompleted: toDoList[index][1],
-            onChanged: (p0) {}
+            onChanged: (value) => checkBoxChanged(value, index),
           );
         }
       ),
