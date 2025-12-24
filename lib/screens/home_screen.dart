@@ -41,6 +41,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
+
+      //add task button
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        backgroundColor: Colors.yellow,
+        child: Icon(Icons.add),
+      ),
+
       body:ListView.builder(
         itemCount: toDoList.length,
         itemBuilder: (context, index) {
