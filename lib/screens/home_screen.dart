@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo_app/util/dialog_box.dart';
 
 import '../util/todo_tile.dart';
 
@@ -12,6 +13,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  final _controller = TextEditingController();
+
+  //task stored
   List toDoList = [
     ["Do Homework", true],
     ["Go Gym", true],
@@ -20,10 +24,33 @@ class _HomeScreenState extends State<HomeScreen> {
     ["Do Nothing", true],
   ];
 
+  //checkbox
   void checkBoxChanged(bool? value, int index){
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
     });
+  }
+
+  void saveTask(){
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
+  //adding task
+  void createNewTask(){
+      showDialog(
+        context: context,
+        builder: (context){
+          return DialogBox(
+            controller: _controller,
+            onSave: saveTask,
+            onCancel: () => Navigator.of(context).pop(),
+          );
+        }
+      );
   }
 
   @override
@@ -44,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       //add task button
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: createNewTask,
         backgroundColor: Colors.yellow,
         child: Icon(Icons.add),
       ),
